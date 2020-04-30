@@ -1,0 +1,2 @@
+rootProject.name='Kotlin Football Match Schedule'
+include ':app'
