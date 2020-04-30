@@ -35,7 +35,7 @@ class EventActivity : AppCompatActivity(),EventView{
     }
 
     override fun showNoEvent() {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        eventUI.showNoEvent()
     }
 
     override fun showNextEvent(data: List<Event>) {

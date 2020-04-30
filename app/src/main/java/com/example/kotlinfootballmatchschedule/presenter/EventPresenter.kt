@@ -23,6 +23,8 @@ class EventPresenter(private val view: EventView,
                 view.hideLoading()
                 if(data.events!=null){
                     view.showNextEvent(data.events)
+                }else{
+                    view.showNoEvent()
                 }
             }
         }

@@ -28,7 +28,6 @@ class EventUI(context:Context) : AnkoComponent<EventActivity>,EventView {
     }
 
     override fun showNoEvent() {
-
         text.text = "no Event"
     }
 
