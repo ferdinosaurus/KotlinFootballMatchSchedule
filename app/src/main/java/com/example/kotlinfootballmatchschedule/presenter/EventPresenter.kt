@@ -20,12 +20,12 @@ class EventPresenter(private val view: EventView,
                 EventResponse::class.java
             )
             uiThread {
-                view.hideLoading()
                 if(data.events!=null){
                     view.showNextEvent(data.events)
                 }else{
                     view.showNoEvent()
                 }
+                view.hideLoading()
             }
         }
     }

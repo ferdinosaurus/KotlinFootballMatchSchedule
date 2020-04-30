@@ -5,7 +5,7 @@ import android.view.View
 import android.widget.ProgressBar
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.example.kotlinfootballleague.LeagueAdapter
+import com.example.kotlinfootballmatchschedule.adapter.LeagueAdapter
 import com.example.kotlinfootballmatchschedule.activity.EventActivity
 import com.example.kotlinfootballmatchschedule.activity.MainActivity
 import com.example.kotlinfootballmatchschedule.model.League
@@ -19,7 +19,7 @@ class MainUI (context: Context): AnkoComponent<MainActivity> , MainView {
 
 
     var leagues: MutableList<League> = mutableListOf()
-    lateinit var rv_league:RecyclerView
+    lateinit var rvLeague:RecyclerView
 
     private lateinit var progressBar: ProgressBar
 
@@ -32,7 +32,7 @@ class MainUI (context: Context): AnkoComponent<MainActivity> , MainView {
             relativeLayout {
 
                 lparams(matchParent, matchParent)
-                rv_league = recyclerView {
+                rvLeague = recyclerView {
 
                     lparams(matchParent, matchParent)
                     layoutManager = GridLayoutManager(context, 2)
@@ -61,7 +61,7 @@ class MainUI (context: Context): AnkoComponent<MainActivity> , MainView {
     }
 
     override fun showLeagueList(data: List<League>) {
-        rv_league.adapter = LeagueAdapter(context, data as MutableList<League>) {
+        rvLeague.adapter = LeagueAdapter(context, data as MutableList<League>) {
             context.startActivity<EventActivity>("ExtraLeagueId" to it.idLeague)
             context.toast("id = "+it.strLeague)
         }

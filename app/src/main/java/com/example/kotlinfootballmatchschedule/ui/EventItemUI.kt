@@ -3,16 +3,15 @@ package com.example.kotlinfootballmatchschedule.ui
 import android.view.Gravity
 import android.view.View
 import android.view.ViewGroup
-import android.widget.LinearLayout
 import androidx.core.content.ContextCompat
 import com.example.kotlinfootballmatchschedule.R
 import org.jetbrains.anko.*
 
-class LeagueItemUI: AnkoComponent<ViewGroup> {
+class EventItemUI: AnkoComponent<ViewGroup> {
 
     companion object {
-        val tvLeagueName = 1
-        val ivLeagueImage = 2
+        val tvEventName = 1
+        val tvEventDate = 2
 
     }
     override fun createView(ui: AnkoContext<ViewGroup>): View = with(ui){
@@ -21,20 +20,9 @@ class LeagueItemUI: AnkoComponent<ViewGroup> {
 
             padding = dip(16)
 
-
-            imageView{
-
-                id = ivLeagueImage
-                layoutParams = LinearLayout.LayoutParams(matchParent, wrapContent)
-            }.lparams{
-                width = 500
-                height = 500
-                gravity = Gravity.CENTER
-            }
-
             textView {
-                id = tvLeagueName
-                text = "Club Name"
+                id = tvEventName
+                text = "Event Name"
                 textSize = 20F
                 textColor = ContextCompat.getColor(context, R.color.colorPrimaryDark)
                 gravity = Gravity.CENTER
@@ -43,6 +31,20 @@ class LeagueItemUI: AnkoComponent<ViewGroup> {
                 height = wrapContent
                 topMargin = 5
             }
+
+            textView {
+                id = tvEventDate
+                text = "Event date"
+                textSize = 20F
+                textColor = ContextCompat.getColor(context, R.color.colorPrimaryDark)
+                gravity = Gravity.CENTER
+            }.lparams{
+                width = matchParent
+                height = wrapContent
+                topMargin = 5
+            }
+
+
 
         }
     }
