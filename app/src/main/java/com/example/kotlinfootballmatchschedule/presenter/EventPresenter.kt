@@ -11,12 +11,11 @@ import org.jetbrains.anko.uiThread
 class EventPresenter(private val view: EventView,
                      private val apiRepository: ApiRepository,
                      private val gson: Gson) {
-
     fun getNextEvent(leagueId: String?) {
         view.showLoading()
         doAsync {
             val data = gson.fromJson(apiRepository
-                .doRequest(TheSportDBApi.getNextLeague(leagueId)),
+                .doRequest(TheSportDBApi.getNextEvent(leagueId)),
                 EventResponse::class.java
             )
             uiThread {
@@ -29,5 +28,45 @@ class EventPresenter(private val view: EventView,
             }
         }
     }
+
+    fun getPrevEvent(leagueId: String?) {
+        view.showLoading()
+        doAsync {
+            val data = gson.fromJson(apiRepository
+                .doRequest(TheSportDBApi.getPrevEvent(leagueId)),
+                EventResponse::class.java
+            )
+            uiThread {
+                if(data.events!=null){
+                    view.showNextEvent(data.events)
+                }else{
+                    view.showNoEvent()
+                }
+                view.hideLoading()
+            }
+        }
+    }
+
+    fun getSearchEvent(textSearch: String?) {
+        view.showLoading()
+        doAsync {
+            val data = gson.fromJson(apiRepository
+                .doRequest(TheSportDBApi.getSearchEvent(textSearch)),
+                EventResponse::class.java
+            )
+            uiThread {
+                if(data.events!=null){
+                    view.showNextEvent(data.events)
+                }else{
+                    view.showNoEvent()
+                }
+                view.hideLoading()
+            }
+        }
+    }
+
+
+
+
 
 }
