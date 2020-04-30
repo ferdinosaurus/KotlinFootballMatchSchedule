@@ -10,8 +10,8 @@ import org.jetbrains.anko.*
 class EventItemUI: AnkoComponent<ViewGroup> {
 
     companion object {
-        val tvEventName = 1
-        val tvEventDate = 2
+        const val tvEventName = 1
+        const val tvEventDate = 2
 
     }
     override fun createView(ui: AnkoContext<ViewGroup>): View = with(ui){

@@ -1,6 +1,5 @@
 package com.example.kotlinfootballmatchschedule.ui
 
-import android.content.Context
 import android.view.Gravity
 import android.view.View
 import android.widget.*
@@ -9,9 +8,8 @@ import com.example.kotlinfootballmatchschedule.model.Event
 import com.example.kotlinfootballmatchschedule.view.EventDetailView
 import org.jetbrains.anko.*
 
-class EventDetailUI(context:Context) : AnkoComponent<EventDetailActivity>,EventDetailView{
+class EventDetailUI: AnkoComponent<EventDetailActivity>,EventDetailView{
 
-    private var context:Context = context
     private lateinit var progressBar: ProgressBar
     private lateinit var linearLayout:LinearLayout
 

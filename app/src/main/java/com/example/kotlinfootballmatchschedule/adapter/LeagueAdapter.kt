@@ -25,7 +25,7 @@ class LeagueAdapter(private val context: Context, private val items: MutableList
     class ViewHolder(override val containerView: View) : RecyclerView.ViewHolder(containerView),
         LayoutContainer {
 
-        var tvName: TextView = itemView.findViewById(LeagueItemUI.tvLeagueName)
+        private var tvName: TextView = itemView.findViewById(LeagueItemUI.tvLeagueName)
         //var ivImage: ImageView = itemView.findViewById(LeagueItemUI.ivLeagueImage)
 
         fun bindItem(items: League, listener: (League) -> Unit) {

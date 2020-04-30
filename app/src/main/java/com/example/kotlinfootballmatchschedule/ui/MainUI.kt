@@ -18,8 +18,8 @@ class MainUI (context: Context): AnkoComponent<MainActivity> , MainView {
     val context = context
 
 
-    var leagues: MutableList<League> = mutableListOf()
-    lateinit var rvLeague:RecyclerView
+    private var leagues: MutableList<League> = mutableListOf()
+    private lateinit var rvLeague:RecyclerView
 
     private lateinit var progressBar: ProgressBar
 

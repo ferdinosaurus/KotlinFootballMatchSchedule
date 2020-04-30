@@ -6,9 +6,7 @@ import com.example.kotlinfootballmatchschedule.ApiRepository
 import com.example.kotlinfootballmatchschedule.R
 import com.example.kotlinfootballmatchschedule.model.Event
 import com.example.kotlinfootballmatchschedule.presenter.EventDetailPresenter
-import com.example.kotlinfootballmatchschedule.presenter.EventPresenter
 import com.example.kotlinfootballmatchschedule.ui.EventDetailUI
-import com.example.kotlinfootballmatchschedule.ui.EventUI
 import com.example.kotlinfootballmatchschedule.view.EventDetailView
 import com.google.gson.Gson
 import org.jetbrains.anko.setContentView
@@ -23,7 +21,7 @@ class EventDetailActivity : AppCompatActivity(),EventDetailView {
         super.onCreate(savedInstanceState)
         val eventId = intent.getStringExtra("extraEventId")
         setContentView(R.layout.activity_event_detail)
-        eventDetailUI = EventDetailUI(this)
+        eventDetailUI = EventDetailUI()
         eventDetailUI.setContentView(this)
 
         eventDetailPresenter = EventDetailPresenter(this,ApiRepository(), Gson())

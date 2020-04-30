@@ -1,7 +1,6 @@
 package com.example.kotlinfootballmatchschedule
 
 import android.net.Uri
-import android.util.Log
 
 object TheSportDBApi {
 
