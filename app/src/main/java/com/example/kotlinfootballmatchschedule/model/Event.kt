@@ -1,8 +1,11 @@
 package com.example.kotlinfootballmatchschedule.model
 
+import android.os.Parcelable
 import com.google.gson.annotations.SerializedName
+import kotlinx.android.parcel.Parcelize
 
-class Event {
+@Parcelize
+class Event : Parcelable {
 
     @SerializedName("idEvent")
     var idEvent: String? = null

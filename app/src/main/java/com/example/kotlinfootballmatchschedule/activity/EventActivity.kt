@@ -29,10 +29,10 @@ class EventActivity : AppCompatActivity(),EventView{
 
         eventPresenter.getPrevEvent(leagueId)
         eventUI.buttonPrev.onClick {
-            eventPresenter.getSearchEvent(leagueId)
+            eventPresenter.getPrevEvent(leagueId)
         }
         eventUI.buttonNext.onClick {
-            eventPresenter.getSearchEvent(leagueId)
+            eventPresenter.getNextEvent(leagueId)
         }
 
         eventUI.searchView.setOnQueryTextListener(object:SearchView.OnQueryTextListener{
@@ -63,7 +63,7 @@ class EventActivity : AppCompatActivity(),EventView{
         eventUI.showNoEvent()
     }
 
-    override fun showNextEvent(data: List<Event>) {
-        eventUI.showNextEvent(data)
+    override fun showEvent(data: List<Event>) {
+        eventUI.showEvent(data)
     }
 }

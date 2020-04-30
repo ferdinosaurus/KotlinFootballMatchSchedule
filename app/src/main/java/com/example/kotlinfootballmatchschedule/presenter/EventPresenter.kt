@@ -20,7 +20,7 @@ class EventPresenter(private val view: EventView,
             )
             uiThread {
                 if(data.events!=null){
-                    view.showNextEvent(data.events)
+                    view.showEvent(data.events)
                 }else{
                     view.showNoEvent()
                 }
@@ -38,7 +38,7 @@ class EventPresenter(private val view: EventView,
             )
             uiThread {
                 if(data.events!=null){
-                    view.showNextEvent(data.events)
+                    view.showEvent(data.events)
                 }else{
                     view.showNoEvent()
                 }
@@ -56,7 +56,7 @@ class EventPresenter(private val view: EventView,
             )
             uiThread {
                 if(data.events!=null){
-                    view.showNextEvent(data.events)
+                    view.showEvent(data.events)
                 }else{
                     view.showNoEvent()
                 }

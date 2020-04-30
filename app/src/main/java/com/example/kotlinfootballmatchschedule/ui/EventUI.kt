@@ -7,6 +7,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.kotlinfootballmatchschedule.adapter.EventAdapter
 import com.example.kotlinfootballmatchschedule.activity.EventActivity
+import com.example.kotlinfootballmatchschedule.activity.EventDetailActivity
 import com.example.kotlinfootballmatchschedule.model.Event
 import com.example.kotlinfootballmatchschedule.view.EventView
 import org.jetbrains.anko.*
@@ -92,11 +93,12 @@ class EventUI(context:Context) : AnkoComponent<EventActivity>,EventView {
         recyclerView.visibility = View.GONE
     }
 
-    override fun showNextEvent(data: List<Event>) {
+    override fun showEvent(data: List<Event>) {
 
         recyclerView.visibility = View.VISIBLE
         recyclerView.adapter = EventAdapter(context,data as MutableList<Event>){
-            context.toast("id = "+it.idEvent)
+            context.startActivity<EventDetailActivity>("extraEventId" to it.idEvent)
+
         }
     }
 }

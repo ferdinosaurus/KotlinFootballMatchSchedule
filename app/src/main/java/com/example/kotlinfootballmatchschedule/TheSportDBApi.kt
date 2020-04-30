@@ -1,6 +1,7 @@
 package com.example.kotlinfootballmatchschedule
 
 import android.net.Uri
+import android.util.Log
 
 object TheSportDBApi {
 
@@ -52,17 +53,14 @@ object TheSportDBApi {
             .toString()
     }
 
-
-
-
-    fun getTeams(league: String?): String {
+    fun getDetailEvent(eventId: String?): String {
         return Uri.parse(BuildConfig.BASE_URL).buildUpon()
             .appendPath("api")
             .appendPath("v1")
             .appendPath("json")
             .appendPath(BuildConfig.TSDB_API_KEY)
-            .appendPath("search_all_teams.php")
-            .appendQueryParameter("l", league)
+            .appendPath("lookupevent.php")
+            .appendQueryParameter("id", eventId)
             .build()
             .toString()
     }

@@ -2,9 +2,9 @@ package com.example.kotlinfootballmatchschedule.view
 
 import com.example.kotlinfootballmatchschedule.model.Event
 
-interface EventView{
+interface EventDetailView{
     fun showLoading()
     fun hideLoading()
     fun showNoEvent()
-    fun showEvent(data: List<Event>)
+    fun showDetailEvent(data: Event)
 }
