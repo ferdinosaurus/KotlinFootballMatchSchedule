@@ -15,6 +15,18 @@ class EventDetailUI: AnkoComponent<EventDetailActivity>,EventDetailView{
 
 
     private lateinit var txtStrEvent:TextView
+
+    private lateinit var txtStrHomeTeam:TextView
+    private lateinit var txtStrAwayTeam:TextView
+
+    private lateinit var txtIntHomeScore:TextView
+    private lateinit var txtIntAwayScore:TextView
+
+    private lateinit var txtintHomeShots:TextView
+    private lateinit var txtintAwayShots:TextView
+
+
+
     private lateinit var txtStrHomeLineupGoalkeeper:TextView
     private lateinit var txtstrAwayLineupGoalkeeper:TextView
 
@@ -40,6 +52,99 @@ class EventDetailUI: AnkoComponent<EventDetailActivity>,EventDetailView{
                     width = matchParent
                     height = wrapContent
                 }
+
+
+                linearLayout {
+                    lparams(matchParent, wrapContent)
+                    orientation = LinearLayout.HORIZONTAL
+
+                    txtStrHomeTeam = textView {
+                        gravity = Gravity.CENTER
+                    }.lparams{
+                        width = dip(0)
+                        height = matchParent
+                        weight = 1F
+                    }
+
+                    textView {
+                        text = " VS "
+                        gravity = Gravity.CENTER
+                    }.lparams{
+                        width = dip(0)
+                        height = matchParent
+                        weight = 1F
+                    }
+
+                    txtStrAwayTeam = textView {
+                        gravity = Gravity.CENTER}.lparams{
+                        width = dip(0)
+                        height = matchParent
+                        weight = 1F
+                    }
+
+                }
+
+                linearLayout {
+                    lparams(matchParent, wrapContent)
+                    orientation = LinearLayout.HORIZONTAL
+
+                    txtIntHomeScore = textView {
+                        gravity = Gravity.CENTER
+                    }.lparams{
+                        width = dip(0)
+                        height = matchParent
+                        weight = 1F
+                    }
+
+                    textView {
+                        text = " SCORE "
+                        gravity = Gravity.CENTER
+                    }.lparams{
+                        width = dip(0)
+                        height = matchParent
+                        weight = 1F
+                    }
+
+                    txtIntAwayScore = textView {
+                        gravity = Gravity.CENTER}.lparams{
+                        width = dip(0)
+                        height = matchParent
+                        weight = 1F
+                    }
+
+                }
+
+                linearLayout {
+                    lparams(matchParent, wrapContent)
+                    orientation = LinearLayout.HORIZONTAL
+
+                    txtintHomeShots = textView {
+                        gravity = Gravity.CENTER
+                    }.lparams{
+                        width = dip(0)
+                        height = matchParent
+                        weight = 1F
+                    }
+
+                    textView {
+                        text = " SHOT "
+                        gravity = Gravity.CENTER
+                    }.lparams{
+                        width = dip(0)
+                        height = matchParent
+                        weight = 1F
+                    }
+
+                    txtintAwayShots = textView {
+                        gravity = Gravity.CENTER}.lparams{
+                        width = dip(0)
+                        height = matchParent
+                        weight = 1F
+                    }
+
+                }
+
+
 
                 linearLayout {
                     lparams(matchParent, wrapContent)
@@ -119,6 +224,16 @@ class EventDetailUI: AnkoComponent<EventDetailActivity>,EventDetailView{
 
     override fun showDetailEvent(data: Event) {
         txtStrEvent.text = data.strEvent
+
+        txtStrHomeTeam.text = data.strHomeTeam
+        txtStrAwayTeam.text = data.strAwayTeam
+
+        txtIntHomeScore.text = data.intHomeScore
+        txtIntAwayScore.text = data.intAwayScore
+
+        txtintHomeShots.text = data.intHomeShots
+        txtintAwayShots.text = data.intAwayShots
+
         txtStrHomeLineupGoalkeeper.text = data.strHomeLineupGoalkeeper
         txtstrAwayLineupGoalkeeper.text = data.strAwayLineupGoalkeeper
 
