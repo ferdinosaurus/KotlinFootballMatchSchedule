@@ -3,14 +3,16 @@ package com.example.kotlinfootballmatchschedule.adapter
 import android.content.Context
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.kotlinfootballmatchschedule.ui.LeagueItemUI
 import com.example.kotlinfootballmatchschedule.model.League
+import com.example.kotlinfootballmatchschedule.model.LeagueParcelable
 import kotlinx.android.extensions.LayoutContainer
 import org.jetbrains.anko.AnkoContext
 
-class LeagueAdapter(private val context: Context, private val items: MutableList<League>, private val listener:(League) ->Unit )
+class LeagueAdapter(private val context: Context, private val items: MutableList<LeagueParcelable>, private val listener:(LeagueParcelable) ->Unit )
     : RecyclerView.Adapter<LeagueAdapter.ViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int) =
@@ -26,16 +28,15 @@ class LeagueAdapter(private val context: Context, private val items: MutableList
         LayoutContainer {
 
         private var tvName: TextView = itemView.findViewById(LeagueItemUI.tvLeagueName)
-        //var ivImage: ImageView = itemView.findViewById(LeagueItemUI.ivLeagueImage)
-
-        fun bindItem(items: League, listener: (League) -> Unit) {
-            tvName.text = items.strLeague
+        var ivImage: ImageView = itemView.findViewById(LeagueItemUI.ivLeagueImage)
 
 
-            /*
+        fun bindItem(items: LeagueParcelable, listener: (LeagueParcelable) -> Unit) {
+            tvName.text = items.name
+
+
             val tempImage:Int = items.image!!
             ivImage.setImageResource(tempImage)
-            */
 
 
             containerView.setOnClickListener { listener(items) }

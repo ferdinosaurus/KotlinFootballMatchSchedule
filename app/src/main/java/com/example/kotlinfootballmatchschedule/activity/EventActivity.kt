@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.widget.SearchView
 import com.example.kotlinfootballmatchschedule.ApiRepository
 import com.example.kotlinfootballmatchschedule.model.Event
+import com.example.kotlinfootballmatchschedule.model.LeagueParcelable
 import com.example.kotlinfootballmatchschedule.presenter.EventPresenter
 import com.example.kotlinfootballmatchschedule.ui.EventUI
 import com.example.kotlinfootballmatchschedule.view.EventView
@@ -15,30 +16,31 @@ import org.jetbrains.anko.toast
 
 class EventActivity : AppCompatActivity(),EventView{
 
-    private lateinit var leagueId: String
+    //private lateinit var leagueId: String
+    private lateinit var leagueParcelable: LeagueParcelable
     private lateinit var eventUI:EventUI
     private lateinit var eventPresenter:EventPresenter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        leagueId = intent.getStringExtra("ExtraLeagueId")
+        //leagueId = intent.getStringExtra("ExtraLeagueId")
+        leagueParcelable= intent.getParcelableExtra<LeagueParcelable>("ExtraLeague")
         eventUI = EventUI(this)
         eventUI.setContentView(this)
         eventPresenter = EventPresenter(this,ApiRepository(),Gson())
 
 
-        eventPresenter.getPrevEvent(leagueId)
+        eventPresenter.getPrevEvent(leagueParcelable.id)
         eventUI.buttonPrev.onClick {
-            eventPresenter.getPrevEvent(leagueId)
+            eventPresenter.getPrevEvent(leagueParcelable.id)
         }
         eventUI.buttonNext.onClick {
-            eventPresenter.getNextEvent(leagueId)
+            eventPresenter.getNextEvent(leagueParcelable.id)
         }
 
         eventUI.searchView.setOnQueryTextListener(object:SearchView.OnQueryTextListener{
             override fun onQueryTextSubmit(query: String?): Boolean {
-                toast(query.toString())
-                eventPresenter.getSearchEvent(query.toString())
+                eventPresenter.getSearchEvent(query)
                 return false
             }
 

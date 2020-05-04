@@ -1,11 +1,11 @@
 package com.example.kotlinfootballmatchschedule.view
 
-import com.example.kotlinfootballmatchschedule.model.League
+import com.example.kotlinfootballmatchschedule.model.LeagueParcelable
 
 interface MainView {
     fun showLoading()
     fun hideLoading()
-    fun showLeagueList(data: List<League>)
+    fun showLeagueList(data: List<LeagueParcelable>)
 
 
 }

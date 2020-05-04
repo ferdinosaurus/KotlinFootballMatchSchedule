@@ -9,6 +9,7 @@ import com.example.kotlinfootballmatchschedule.adapter.LeagueAdapter
 import com.example.kotlinfootballmatchschedule.activity.EventActivity
 import com.example.kotlinfootballmatchschedule.activity.MainActivity
 import com.example.kotlinfootballmatchschedule.model.League
+import com.example.kotlinfootballmatchschedule.model.LeagueParcelable
 import com.example.kotlinfootballmatchschedule.view.MainView
 import org.jetbrains.anko.*
 import org.jetbrains.anko.recyclerview.v7.recyclerView
@@ -18,7 +19,7 @@ class MainUI (context: Context): AnkoComponent<MainActivity> , MainView {
     val context = context
 
 
-    private var leagues: MutableList<League> = mutableListOf()
+    private var leagues: MutableList<LeagueParcelable> = mutableListOf()
     private lateinit var rvLeague:RecyclerView
 
     private lateinit var progressBar: ProgressBar
@@ -37,9 +38,7 @@ class MainUI (context: Context): AnkoComponent<MainActivity> , MainView {
                     lparams(matchParent, matchParent)
                     layoutManager = GridLayoutManager(context, 2)
                     adapter = LeagueAdapter(context, leagues) {
-                        startActivity<EventActivity>("leagueExtra" to it)
-
-                        toast("id = "+it.strLeague)
+                        startActivity<EventActivity>("ExtraLeague" to it)
                     }
 
                 }
@@ -60,10 +59,9 @@ class MainUI (context: Context): AnkoComponent<MainActivity> , MainView {
         progressBar.visibility = View.GONE
     }
 
-    override fun showLeagueList(data: List<League>) {
-        rvLeague.adapter = LeagueAdapter(context, data as MutableList<League>) {
-            context.startActivity<EventActivity>("ExtraLeagueId" to it.idLeague)
-            context.toast("id = "+it.strLeague)
+    override fun showLeagueList(data: List<LeagueParcelable>) {
+        rvLeague.adapter = LeagueAdapter(context, data as MutableList<LeagueParcelable>) {
+            context.startActivity<EventActivity>("ExtraLeague" to it)
         }
     }
 }

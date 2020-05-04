@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.example.kotlinfootballmatchschedule.ApiRepository
 import com.example.kotlinfootballmatchschedule.model.League
+import com.example.kotlinfootballmatchschedule.model.LeagueParcelable
 import com.example.kotlinfootballmatchschedule.presenter.MainPresenter
 import com.example.kotlinfootballmatchschedule.ui.MainUI
 import com.example.kotlinfootballmatchschedule.view.MainView
@@ -24,11 +25,12 @@ class MainActivity : AppCompatActivity() ,MainView{
     }
 
     private fun init(){
-        val request = ApiRepository()
-        val gson = Gson()
-
-        presenter = MainPresenter(this,request,gson)
-        presenter.getAllLeague()
+        //val request = ApiRepository()
+        //val gson = Gson()
+        //presenter = MainPresenter(this,request,gson)
+        //presenter.getAllLeague()
+        presenter = MainPresenter(this,this)
+        presenter.setupData()
 
     }
 
@@ -40,7 +42,7 @@ class MainActivity : AppCompatActivity() ,MainView{
         mainUI.hideLoading()
     }
 
-    override fun showLeagueList(data: List<League>) {
+    override fun showLeagueList(data: List<LeagueParcelable>) {
         mainUI.showLeagueList(data)
 
     }
