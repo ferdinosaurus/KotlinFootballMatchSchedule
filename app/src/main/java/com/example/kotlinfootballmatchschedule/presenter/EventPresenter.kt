@@ -3,6 +3,7 @@ package com.example.kotlinfootballmatchschedule.presenter
 import com.example.kotlinfootballmatchschedule.ApiRepository
 import com.example.kotlinfootballmatchschedule.TheSportDBApi
 import com.example.kotlinfootballmatchschedule.model.EventResponse
+import com.example.kotlinfootballmatchschedule.model.SearchEventResponse
 import com.example.kotlinfootballmatchschedule.view.EventView
 import com.google.gson.Gson
 import org.jetbrains.anko.doAsync
@@ -52,11 +53,11 @@ class EventPresenter(private val view: EventView,
         doAsync {
             val data = gson.fromJson(apiRepository
                 .doRequest(TheSportDBApi.getSearchEvent(textSearch)),
-                EventResponse::class.java
+                SearchEventResponse::class.java
             )
             uiThread {
-                if(data.events!=null){
-                    view.showEvent(data.events)
+                if(data.event!=null){
+                    view.showEvent(data.event)
                 }else{
                     view.showNoEvent()
                 }
