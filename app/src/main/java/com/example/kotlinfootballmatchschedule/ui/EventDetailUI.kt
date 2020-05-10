@@ -5,7 +5,9 @@ import android.view.View
 import android.widget.*
 import com.example.kotlinfootballmatchschedule.activity.EventDetailActivity
 import com.example.kotlinfootballmatchschedule.model.Event
+import com.example.kotlinfootballmatchschedule.model.Team
 import com.example.kotlinfootballmatchschedule.view.EventDetailView
+import com.squareup.picasso.Picasso
 import org.jetbrains.anko.*
 
 class EventDetailUI: AnkoComponent<EventDetailActivity>,EventDetailView{
@@ -18,6 +20,11 @@ class EventDetailUI: AnkoComponent<EventDetailActivity>,EventDetailView{
 
     private lateinit var txtStrHomeTeam:TextView
     private lateinit var txtStrAwayTeam:TextView
+
+    private lateinit var txtStrHomeImage:ImageView
+    private lateinit var txtStrAwayImage:ImageView
+
+
 
     private lateinit var txtIntHomeScore:TextView
     private lateinit var txtIntAwayScore:TextView
@@ -32,6 +39,11 @@ class EventDetailUI: AnkoComponent<EventDetailActivity>,EventDetailView{
 
     private lateinit var txtStrHomeLineupDefense:TextView
     private lateinit var txtStrAwayLineupDefense:TextView
+
+    private lateinit var txtStrHomeLineupMidfield:TextView
+    private lateinit var txtStrAwayLineupMidfield:TextView
+
+
 
 
 
@@ -51,6 +63,39 @@ class EventDetailUI: AnkoComponent<EventDetailActivity>,EventDetailView{
                 }.lparams{
                     width = matchParent
                     height = wrapContent
+                }
+
+
+                linearLayout {
+                    lparams(matchParent, wrapContent)
+                    orientation = LinearLayout.HORIZONTAL
+
+                    txtStrHomeImage = imageView {
+                    }.lparams{
+                        width = dip(0)
+                        height = dip(150)
+                        weight = 1F
+                        gravity = Gravity.CENTER
+                    }
+
+                    textView {
+                        text = " VS "
+                        gravity = Gravity.CENTER
+                    }.lparams{
+                        width = dip(0)
+                        height = matchParent
+                        weight = 1F
+                    }
+
+                    txtStrAwayImage = imageView {
+
+                    }.lparams{
+                        width = dip(0)
+                        height = dip(200)
+                        weight = 1F
+                        gravity = Gravity.CENTER
+                    }
+
                 }
 
 
@@ -207,6 +252,37 @@ class EventDetailUI: AnkoComponent<EventDetailActivity>,EventDetailView{
                     }
                 }
 
+                linearLayout {
+                    lparams(matchParent, wrapContent)
+                    orientation = LinearLayout.HORIZONTAL
+
+                    txtStrHomeLineupMidfield = textView {
+                        gravity = Gravity.CENTER
+                    }.lparams{
+                        width = dip(0)
+                        height = matchParent
+                        weight = 1F
+                    }
+
+                    textView {
+                        text = "Midfield"
+                        gravity = Gravity.CENTER
+                    }.lparams{
+                        width = dip(0)
+                        height = matchParent
+                        weight = 1F
+                    }
+
+                    txtStrAwayLineupMidfield = textView {
+
+                        gravity = Gravity.CENTER
+                    }.lparams{
+                        width = dip(0)
+                        height = matchParent
+                        weight = 1F
+                    }
+                }
+
             }
         }
     }
@@ -223,6 +299,7 @@ class EventDetailUI: AnkoComponent<EventDetailActivity>,EventDetailView{
     }
 
     override fun showDetailEvent(data: Event) {
+        //TODO detailnya banyak yang null
         txtStrEvent.text = data.strEvent
 
         txtStrHomeTeam.text = data.strHomeTeam
@@ -239,7 +316,18 @@ class EventDetailUI: AnkoComponent<EventDetailActivity>,EventDetailView{
 
         txtStrHomeLineupDefense.text = data.strHomeLineupDefense
         txtStrAwayLineupDefense.text = data.strAwayLineupDefense
+
+        txtStrHomeLineupMidfield.text = data.strHomeLineupMidfield
+        txtStrAwayLineupMidfield.text = data.strAwayLineupMidfield
+
     }
 
+    override fun showDetailHome(data: Team) {
+        Picasso.get().load(data.strTeamBadge).fit().into(txtStrHomeImage)
+    }
+
+    override fun showDetailAway(data: Team) {
+        Picasso.get().load(data.strTeamBadge).fit().into(txtStrAwayImage)
+    }
 
 }

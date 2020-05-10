@@ -3,6 +3,7 @@ package com.example.kotlinfootballmatchschedule.activity
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.example.kotlinfootballmatchschedule.ApiRepository
+import com.example.kotlinfootballmatchschedule.R
 import com.example.kotlinfootballmatchschedule.model.League
 import com.example.kotlinfootballmatchschedule.model.LeagueParcelable
 import com.example.kotlinfootballmatchschedule.presenter.MainPresenter

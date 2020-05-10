@@ -1,27 +1,36 @@
 package com.example.kotlinfootballmatchschedule.ui
 
+import android.app.Activity
 import android.content.Context
 import android.view.View
-import android.widget.*
+import android.widget.Button
+import android.widget.LinearLayout
+import android.widget.ProgressBar
+import android.widget.SearchView
+import androidx.fragment.app.FragmentManager
+import androidx.fragment.app.FragmentTransaction
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.example.kotlinfootballmatchschedule.adapter.EventAdapter
+import com.example.kotlinfootballmatchschedule.EventNextFragment
 import com.example.kotlinfootballmatchschedule.activity.EventActivity
 import com.example.kotlinfootballmatchschedule.activity.EventDetailActivity
+import com.example.kotlinfootballmatchschedule.adapter.EventAdapter
 import com.example.kotlinfootballmatchschedule.model.Event
 import com.example.kotlinfootballmatchschedule.view.EventView
 import org.jetbrains.anko.*
 import org.jetbrains.anko.recyclerview.v7.recyclerView
 import org.jetbrains.anko.sdk27.coroutines.onQueryTextListener
 
-class EventUI(context:Context) : AnkoComponent<EventActivity>,EventView {
+class EventUI(activity: Activity) : AnkoComponent<EventActivity>,EventView {
 
-    private var context:Context = context
+    private var activity:Activity = activity
     private lateinit var recyclerView:RecyclerView
 
     lateinit var buttonPrev:Button
     lateinit var buttonNext:Button
     lateinit var searchView:SearchView
+
+    var fragmentSearch:EventNextFragment = EventNextFragment()
 
 
 
@@ -31,6 +40,7 @@ class EventUI(context:Context) : AnkoComponent<EventActivity>,EventView {
 
     override fun createView(ui: AnkoContext<EventActivity>) = with(ui) {
         linearLayout {
+
             padding = dip(16)
 
             lparams (width = matchParent, height = matchParent)
@@ -42,6 +52,11 @@ class EventUI(context:Context) : AnkoComponent<EventActivity>,EventView {
                 }
 
             }.lparams(matchParent, wrapContent)
+
+            linearLayout {
+                //TODO tidak bisa digunakan, sudah deprecated
+                //activity.fragmentManager.beginTransaction().add(fragmentSearch)
+            }
 
             linearLayout {
                 lparams(matchParent, wrapContent)
@@ -96,8 +111,8 @@ class EventUI(context:Context) : AnkoComponent<EventActivity>,EventView {
     override fun showEvent(data: List<Event>) {
 
         recyclerView.visibility = View.VISIBLE
-        recyclerView.adapter = EventAdapter(context,data as MutableList<Event>){
-            context.startActivity<EventDetailActivity>("extraEventId" to it.idEvent)
+        recyclerView.adapter = EventAdapter(activity,data as MutableList<Event>){
+            activity.startActivity<EventDetailActivity>("extraEventId" to it.idEvent)
 
         }
     }

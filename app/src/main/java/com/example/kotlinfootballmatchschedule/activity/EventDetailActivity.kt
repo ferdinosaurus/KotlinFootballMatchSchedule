@@ -5,6 +5,7 @@ import android.os.Bundle
 import com.example.kotlinfootballmatchschedule.ApiRepository
 import com.example.kotlinfootballmatchschedule.R
 import com.example.kotlinfootballmatchschedule.model.Event
+import com.example.kotlinfootballmatchschedule.model.Team
 import com.example.kotlinfootballmatchschedule.presenter.EventDetailPresenter
 import com.example.kotlinfootballmatchschedule.ui.EventDetailUI
 import com.example.kotlinfootballmatchschedule.view.EventDetailView
@@ -44,5 +45,14 @@ class EventDetailActivity : AppCompatActivity(),EventDetailView {
 
     override fun showDetailEvent(data: Event) {
         eventDetailUI.showDetailEvent(data)
+        eventDetailPresenter.getDetailTeam(data.idHomeTeam,data.idAwayTeam)
+    }
+
+    override fun showDetailHome(data: Team) {
+        eventDetailUI.showDetailHome(data)
+    }
+
+    override fun showDetailAway(data: Team) {
+        eventDetailUI.showDetailAway(data)
     }
 }
