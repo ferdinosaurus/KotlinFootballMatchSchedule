@@ -4,6 +4,7 @@ import android.view.Gravity
 import android.view.View
 import android.widget.*
 import com.example.kotlinfootballmatchschedule.activity.EventDetailActivity
+import com.example.kotlinfootballmatchschedule.helper.StringHelper
 import com.example.kotlinfootballmatchschedule.model.Event
 import com.example.kotlinfootballmatchschedule.model.Team
 import com.example.kotlinfootballmatchschedule.view.EventDetailView
@@ -17,6 +18,8 @@ class EventDetailUI: AnkoComponent<EventDetailActivity>,EventDetailView{
 
 
     private lateinit var txtStrEvent:TextView
+
+    private lateinit var txtDateEvent:TextView
 
     private lateinit var txtStrHomeTeam:TextView
     private lateinit var txtStrAwayTeam:TextView
@@ -43,6 +46,14 @@ class EventDetailUI: AnkoComponent<EventDetailActivity>,EventDetailView{
     private lateinit var txtStrHomeLineupMidfield:TextView
     private lateinit var txtStrAwayLineupMidfield:TextView
 
+    private lateinit var txtStrHomeLineupForward:TextView
+    private lateinit var txtStrAwayLineupForward:TextView
+
+    private lateinit var txtStrHomeLineupSubstitutes:TextView
+    private lateinit var txtStrAwayLineupSubstitutes:TextView
+
+    private lateinit var txtStrHomeFormation:TextView
+    private lateinit var txtStrAwayFormation:TextView
 
 
 
@@ -64,6 +75,13 @@ class EventDetailUI: AnkoComponent<EventDetailActivity>,EventDetailView{
                     width = matchParent
                     height = wrapContent
                 }
+                txtDateEvent = textView {
+                    gravity = Gravity.CENTER
+                }.lparams{
+                    width = matchParent
+                    height = wrapContent
+                }
+
 
 
                 linearLayout {
@@ -129,159 +147,249 @@ class EventDetailUI: AnkoComponent<EventDetailActivity>,EventDetailView{
 
                 }
 
-                linearLayout {
-                    lparams(matchParent, wrapContent)
-                    orientation = LinearLayout.HORIZONTAL
+                scrollView {
+                    linearLayout {
+                        lparams(matchParent, wrapContent)
+                        orientation = LinearLayout.VERTICAL
 
-                    txtIntHomeScore = textView {
-                        gravity = Gravity.CENTER
-                    }.lparams{
-                        width = dip(0)
-                        height = matchParent
-                        weight = 1F
+                        linearLayout {
+                            lparams(matchParent, wrapContent)
+                            orientation = LinearLayout.HORIZONTAL
+
+                            txtIntHomeScore = textView {
+                                gravity = Gravity.CENTER
+                            }.lparams{
+                                width = dip(0)
+                                height = matchParent
+                                weight = 1F
+                            }
+
+                            textView {
+                                text = " SCORE "
+                                gravity = Gravity.CENTER
+                            }.lparams{
+                                width = dip(0)
+                                height = matchParent
+                                weight = 1F
+                            }
+
+                            txtIntAwayScore = textView {
+                                gravity = Gravity.CENTER}.lparams{
+                                width = dip(0)
+                                height = matchParent
+                                weight = 1F
+                            }
+
+                        }
+                        linearLayout {
+                            lparams(matchParent, wrapContent)
+                            orientation = LinearLayout.HORIZONTAL
+
+                            txtintHomeShots = textView {
+                                gravity = Gravity.CENTER
+                            }.lparams{
+                                width = dip(0)
+                                height = matchParent
+                                weight = 1F
+                            }
+
+                            textView {
+                                text = " SHOT "
+                                gravity = Gravity.CENTER
+                            }.lparams{
+                                width = dip(0)
+                                height = matchParent
+                                weight = 1F
+                            }
+
+                            txtintAwayShots = textView {
+                                gravity = Gravity.CENTER}.lparams{
+                                width = dip(0)
+                                height = matchParent
+                                weight = 1F
+                            }
+
+                        }
+                        linearLayout {
+                            lparams(matchParent, wrapContent)
+                            orientation = LinearLayout.HORIZONTAL
+
+                            txtStrHomeLineupGoalkeeper = textView {
+                                gravity = Gravity.CENTER
+                            }.lparams{
+                                width = dip(0)
+                                height = matchParent
+                                weight = 1F
+                            }
+
+                            textView {
+                                text = "Goalkeeper"
+                                gravity = Gravity.CENTER
+                            }.lparams{
+                                width = dip(0)
+                                height = matchParent
+                                weight = 1F
+                            }
+
+                            txtstrAwayLineupGoalkeeper = textView {
+                                gravity = Gravity.CENTER}.lparams{
+                                width = dip(0)
+                                height = matchParent
+                                weight = 1F
+                            }
+
+                        }
+                        linearLayout {
+                            lparams(matchParent, wrapContent)
+                            orientation = LinearLayout.HORIZONTAL
+
+                            txtStrHomeLineupDefense = textView {
+                                gravity = Gravity.CENTER
+                            }.lparams{
+                                width = dip(0)
+                                height = matchParent
+                                weight = 1F
+                            }
+
+                            textView {
+                                text = "Defense"
+                                gravity = Gravity.CENTER
+                            }.lparams{
+                                width = dip(0)
+                                height = matchParent
+                                weight = 1F
+                            }
+
+                            txtStrAwayLineupDefense = textView {
+
+                                gravity = Gravity.CENTER
+                            }.lparams{
+                                width = dip(0)
+                                height = matchParent
+                                weight = 1F
+                            }
+                        }
+                        linearLayout {
+                            lparams(matchParent, wrapContent)
+                            orientation = LinearLayout.HORIZONTAL
+
+                            txtStrHomeLineupMidfield = textView {
+                                gravity = Gravity.CENTER
+                            }.lparams{
+                                width = dip(0)
+                                height = matchParent
+                                weight = 1F
+                            }
+
+                            textView {
+                                text = "Midfield"
+                                gravity = Gravity.CENTER
+                            }.lparams{
+                                width = dip(0)
+                                height = matchParent
+                                weight = 1F
+                            }
+
+                            txtStrAwayLineupMidfield = textView {
+
+                                gravity = Gravity.CENTER
+                            }.lparams{
+                                width = dip(0)
+                                height = matchParent
+                                weight = 1F
+                            }
+                        }
+                        linearLayout {
+                            lparams(matchParent, wrapContent)
+                            orientation = LinearLayout.HORIZONTAL
+
+                            txtStrHomeLineupForward = textView {
+                                gravity = Gravity.CENTER
+                            }.lparams{
+                                width = dip(0)
+                                height = matchParent
+                                weight = 1F
+                            }
+
+                            textView {
+                                text = "Forward"
+                                gravity = Gravity.CENTER
+                            }.lparams{
+                                width = dip(0)
+                                height = matchParent
+                                weight = 1F
+                            }
+
+                            txtStrAwayLineupForward = textView {
+                                gravity = Gravity.CENTER
+                            }.lparams{
+                                width = dip(0)
+                                height = matchParent
+                                weight = 1F
+                            }
+                        }
+                        linearLayout {
+                            lparams(matchParent, wrapContent)
+                            orientation = LinearLayout.HORIZONTAL
+
+                            txtStrHomeLineupSubstitutes = textView {
+                                gravity = Gravity.CENTER
+                            }.lparams{
+                                width = dip(0)
+                                height = matchParent
+                                weight = 1F
+                            }
+
+                            textView {
+                                text = "Substitutes"
+                                gravity = Gravity.CENTER
+                            }.lparams{
+                                width = dip(0)
+                                height = matchParent
+                                weight = 1F
+                            }
+
+                            txtStrAwayLineupSubstitutes = textView {
+                                gravity = Gravity.CENTER
+                            }.lparams{
+                                width = dip(0)
+                                height = matchParent
+                                weight = 1F
+                            }
+                        }
+                        linearLayout {
+                            lparams(matchParent, wrapContent)
+                            orientation = LinearLayout.HORIZONTAL
+
+                            txtStrHomeFormation = textView {
+                                gravity = Gravity.CENTER
+                            }.lparams{
+                                width = dip(0)
+                                height = matchParent
+                                weight = 1F
+                            }
+
+                            textView {
+                                text = "Formation"
+                                gravity = Gravity.CENTER
+                            }.lparams{
+                                width = dip(0)
+                                height = matchParent
+                                weight = 1F
+                            }
+
+                            txtStrAwayFormation = textView {
+                                gravity = Gravity.CENTER
+                            }.lparams{
+                                width = dip(0)
+                                height = matchParent
+                                weight = 1F
+                            }
+                        }
                     }
-
-                    textView {
-                        text = " SCORE "
-                        gravity = Gravity.CENTER
-                    }.lparams{
-                        width = dip(0)
-                        height = matchParent
-                        weight = 1F
-                    }
-
-                    txtIntAwayScore = textView {
-                        gravity = Gravity.CENTER}.lparams{
-                        width = dip(0)
-                        height = matchParent
-                        weight = 1F
-                    }
-
                 }
 
-                linearLayout {
-                    lparams(matchParent, wrapContent)
-                    orientation = LinearLayout.HORIZONTAL
 
-                    txtintHomeShots = textView {
-                        gravity = Gravity.CENTER
-                    }.lparams{
-                        width = dip(0)
-                        height = matchParent
-                        weight = 1F
-                    }
-
-                    textView {
-                        text = " SHOT "
-                        gravity = Gravity.CENTER
-                    }.lparams{
-                        width = dip(0)
-                        height = matchParent
-                        weight = 1F
-                    }
-
-                    txtintAwayShots = textView {
-                        gravity = Gravity.CENTER}.lparams{
-                        width = dip(0)
-                        height = matchParent
-                        weight = 1F
-                    }
-
-                }
-
-
-
-                linearLayout {
-                    lparams(matchParent, wrapContent)
-                    orientation = LinearLayout.HORIZONTAL
-
-                    txtStrHomeLineupGoalkeeper = textView {
-                        gravity = Gravity.CENTER
-                    }.lparams{
-                        width = dip(0)
-                        height = matchParent
-                        weight = 1F
-                    }
-
-                    textView {
-                        text = "Goalkeeper"
-                        gravity = Gravity.CENTER
-                    }.lparams{
-                        width = dip(0)
-                        height = matchParent
-                        weight = 1F
-                    }
-
-                    txtstrAwayLineupGoalkeeper = textView {
-                        gravity = Gravity.CENTER}.lparams{
-                        width = dip(0)
-                        height = matchParent
-                        weight = 1F
-                    }
-
-                }
-
-                linearLayout {
-                    lparams(matchParent, wrapContent)
-                    orientation = LinearLayout.HORIZONTAL
-
-                    txtStrHomeLineupDefense = textView {
-                        gravity = Gravity.CENTER
-                    }.lparams{
-                        width = dip(0)
-                        height = matchParent
-                        weight = 1F
-                    }
-
-                    textView {
-                        text = "Defense"
-                        gravity = Gravity.CENTER
-                    }.lparams{
-                        width = dip(0)
-                        height = matchParent
-                        weight = 1F
-                    }
-
-                    txtStrAwayLineupDefense = textView {
-
-                        gravity = Gravity.CENTER
-                    }.lparams{
-                        width = dip(0)
-                        height = matchParent
-                        weight = 1F
-                    }
-                }
-
-                linearLayout {
-                    lparams(matchParent, wrapContent)
-                    orientation = LinearLayout.HORIZONTAL
-
-                    txtStrHomeLineupMidfield = textView {
-                        gravity = Gravity.CENTER
-                    }.lparams{
-                        width = dip(0)
-                        height = matchParent
-                        weight = 1F
-                    }
-
-                    textView {
-                        text = "Midfield"
-                        gravity = Gravity.CENTER
-                    }.lparams{
-                        width = dip(0)
-                        height = matchParent
-                        weight = 1F
-                    }
-
-                    txtStrAwayLineupMidfield = textView {
-
-                        gravity = Gravity.CENTER
-                    }.lparams{
-                        width = dip(0)
-                        height = matchParent
-                        weight = 1F
-                    }
-                }
 
             }
         }
@@ -301,6 +409,7 @@ class EventDetailUI: AnkoComponent<EventDetailActivity>,EventDetailView{
     override fun showDetailEvent(data: Event) {
         //TODO detailnya banyak yang null
         txtStrEvent.text = data.strEvent
+        txtDateEvent.text = data.dateEvent
 
         txtStrHomeTeam.text = data.strHomeTeam
         txtStrAwayTeam.text = data.strAwayTeam
@@ -311,14 +420,23 @@ class EventDetailUI: AnkoComponent<EventDetailActivity>,EventDetailView{
         txtintHomeShots.text = data.intHomeShots
         txtintAwayShots.text = data.intAwayShots
 
-        txtStrHomeLineupGoalkeeper.text = data.strHomeLineupGoalkeeper
-        txtstrAwayLineupGoalkeeper.text = data.strAwayLineupGoalkeeper
+        txtStrHomeLineupGoalkeeper.text = StringHelper.splitString(data.strHomeLineupGoalkeeper as String,";")
+        txtstrAwayLineupGoalkeeper.text = StringHelper.splitString(data.strAwayLineupGoalkeeper as String,";")
 
-        txtStrHomeLineupDefense.text = data.strHomeLineupDefense
-        txtStrAwayLineupDefense.text = data.strAwayLineupDefense
+        txtStrHomeLineupDefense.text =StringHelper.splitString(data.strHomeLineupDefense as String,";")
+        txtStrAwayLineupDefense.text =StringHelper.splitString(data.strAwayLineupDefense as String,";")
 
-        txtStrHomeLineupMidfield.text = data.strHomeLineupMidfield
-        txtStrAwayLineupMidfield.text = data.strAwayLineupMidfield
+        txtStrHomeLineupMidfield.text =StringHelper.splitString(data.strHomeLineupMidfield as String,";")
+        txtStrAwayLineupMidfield.text =StringHelper.splitString(data.strAwayLineupMidfield as String,";")
+
+        txtStrHomeLineupForward.text =StringHelper.splitString(data.strHomeLineupForward as String,";")
+        txtStrAwayLineupForward.text =StringHelper.splitString(data.strAwayLineupForward as String,";")
+
+        txtStrHomeLineupSubstitutes.text = StringHelper.splitString(data.strHomeLineupSubstitutes as String,";")
+        txtStrAwayLineupSubstitutes.text = StringHelper.splitString(data.strAwayLineupSubstitutes as String,";")
+
+        txtStrHomeFormation.text = data.strHomeFormation
+        txtStrAwayFormation.text = data.strAwayFormation
 
     }
 
