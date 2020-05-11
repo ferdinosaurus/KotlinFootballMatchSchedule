@@ -5,10 +5,9 @@ import android.view.View
 import android.widget.ProgressBar
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.example.kotlinfootballmatchschedule.adapter.LeagueAdapter
 import com.example.kotlinfootballmatchschedule.activity.EventActivity
 import com.example.kotlinfootballmatchschedule.activity.MainActivity
-import com.example.kotlinfootballmatchschedule.model.League
+import com.example.kotlinfootballmatchschedule.adapter.LeagueAdapter
 import com.example.kotlinfootballmatchschedule.model.LeagueParcelable
 import com.example.kotlinfootballmatchschedule.view.MainView
 import org.jetbrains.anko.*
@@ -16,7 +15,7 @@ import org.jetbrains.anko.recyclerview.v7.recyclerView
 
 class MainUI (context: Context): AnkoComponent<MainActivity> , MainView {
 
-    val context = context
+    private val context = context
 
 
     private var leagues: MutableList<LeagueParcelable> = mutableListOf()

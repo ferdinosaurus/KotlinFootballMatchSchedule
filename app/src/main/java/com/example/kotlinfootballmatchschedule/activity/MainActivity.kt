@@ -1,16 +1,12 @@
 package com.example.kotlinfootballmatchschedule.activity
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import com.example.kotlinfootballmatchschedule.ApiRepository
-import com.example.kotlinfootballmatchschedule.R
-import com.example.kotlinfootballmatchschedule.model.League
+import androidx.appcompat.app.AppCompatActivity
 import com.example.kotlinfootballmatchschedule.model.LeagueParcelable
 import com.example.kotlinfootballmatchschedule.presenter.MainPresenter
 import com.example.kotlinfootballmatchschedule.ui.MainUI
 import com.example.kotlinfootballmatchschedule.view.MainView
-import com.google.gson.Gson
-import org.jetbrains.anko.*
+import org.jetbrains.anko.setContentView
 
 class MainActivity : AppCompatActivity() ,MainView{
 

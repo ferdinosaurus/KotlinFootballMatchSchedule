@@ -6,9 +6,8 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-import com.example.kotlinfootballmatchschedule.ui.LeagueItemUI
-import com.example.kotlinfootballmatchschedule.model.League
 import com.example.kotlinfootballmatchschedule.model.LeagueParcelable
+import com.example.kotlinfootballmatchschedule.ui.LeagueItemUI
 import kotlinx.android.extensions.LayoutContainer
 import org.jetbrains.anko.AnkoContext
 
@@ -28,7 +27,7 @@ class LeagueAdapter(private val context: Context, private val items: MutableList
         LayoutContainer {
 
         private var tvName: TextView = itemView.findViewById(LeagueItemUI.tvLeagueName)
-        var ivImage: ImageView = itemView.findViewById(LeagueItemUI.ivLeagueImage)
+        private var ivImage: ImageView = itemView.findViewById(LeagueItemUI.ivLeagueImage)
 
 
         fun bindItem(items: LeagueParcelable, listener: (LeagueParcelable) -> Unit) {

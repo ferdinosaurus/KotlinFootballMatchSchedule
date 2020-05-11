@@ -1,8 +1,8 @@
 package com.example.kotlinfootballmatchschedule.activity
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.SearchView
+import androidx.appcompat.app.AppCompatActivity
 import com.example.kotlinfootballmatchschedule.ApiRepository
 import com.example.kotlinfootballmatchschedule.model.Event
 import com.example.kotlinfootballmatchschedule.model.LeagueParcelable
@@ -12,7 +12,6 @@ import com.example.kotlinfootballmatchschedule.view.EventView
 import com.google.gson.Gson
 import org.jetbrains.anko.sdk27.coroutines.onClick
 import org.jetbrains.anko.setContentView
-import org.jetbrains.anko.toast
 
 class EventActivity : AppCompatActivity(),EventView{
 
@@ -24,7 +23,7 @@ class EventActivity : AppCompatActivity(),EventView{
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         //leagueId = intent.getStringExtra("ExtraLeagueId")
-        leagueParcelable= intent.getParcelableExtra<LeagueParcelable>("ExtraLeague")
+        leagueParcelable= intent.getParcelableExtra("ExtraLeague")
         eventUI = EventUI(this)
         eventUI.setContentView(this)
         eventPresenter = EventPresenter(this,ApiRepository(),Gson())

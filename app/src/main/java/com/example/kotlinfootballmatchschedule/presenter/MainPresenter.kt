@@ -1,15 +1,9 @@
 package com.example.kotlinfootballmatchschedule.presenter
 
 import android.app.Activity
-import com.example.kotlinfootballmatchschedule.ApiRepository
 import com.example.kotlinfootballmatchschedule.R
-import com.example.kotlinfootballmatchschedule.TheSportDBApi
 import com.example.kotlinfootballmatchschedule.model.LeagueParcelable
-import com.example.kotlinfootballmatchschedule.model.LeagueResponse
 import com.example.kotlinfootballmatchschedule.view.MainView
-import com.google.gson.Gson
-import org.jetbrains.anko.doAsync
-import org.jetbrains.anko.uiThread
 
 class MainPresenter(private val activity: Activity,
                     private val view: MainView
@@ -35,7 +29,7 @@ class MainPresenter(private val activity: Activity,
     fun setupData(){
         view.showLoading()
 
-        var leagueParcelables: MutableList<LeagueParcelable> = mutableListOf()
+        val leagueParcelables: MutableList<LeagueParcelable> = mutableListOf()
 
 
 

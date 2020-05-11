@@ -5,7 +5,7 @@ class StringHelper {
     companion object{
         fun splitString(value:String,split:String):String{
             val stringBuilder = StringBuilder()
-            val resultSplits:List<String> = value?.split(split)
+            val resultSplits:List<String> = value.split(split)
 
             for (split in resultSplits){
                 stringBuilder.append(split+"\n")
