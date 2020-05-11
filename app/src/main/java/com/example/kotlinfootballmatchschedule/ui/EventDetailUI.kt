@@ -407,7 +407,6 @@ class EventDetailUI: AnkoComponent<EventDetailActivity>,EventDetailView{
     }
 
     override fun showDetailEvent(data: Event) {
-        //TODO detailnya banyak yang null
         txtStrEvent.text = data.strEvent
         txtDateEvent.text = data.dateEvent
 

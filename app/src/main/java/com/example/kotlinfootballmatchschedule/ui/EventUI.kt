@@ -47,11 +47,6 @@ class EventUI(activity: Activity) : AnkoComponent<EventActivity>,EventView {
             }.lparams(matchParent, wrapContent)
 
             linearLayout {
-                //TODO tidak bisa digunakan, sudah deprecated
-                //activity.fragmentManager.beginTransaction().add(fragmentSearch)
-            }
-
-            linearLayout {
                 lparams(matchParent, wrapContent)
                 orientation = LinearLayout.HORIZONTAL
 
